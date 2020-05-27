@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/Mollydj/Meetup_App.git/static/css/main.5f361e03.chunk.css",
-    "main.js": "/Mollydj/Meetup_App.git/static/js/main.561c6cf0.chunk.js",
-    "main.js.map": "/Mollydj/Meetup_App.git/static/js/main.561c6cf0.chunk.js.map",
-    "runtime-main.js": "/Mollydj/Meetup_App.git/static/js/runtime-main.211c9555.js",
-    "runtime-main.js.map": "/Mollydj/Meetup_App.git/static/js/runtime-main.211c9555.js.map",
-    "static/js/2.255ba019.chunk.js": "/Mollydj/Meetup_App.git/static/js/2.255ba019.chunk.js",
-    "static/js/2.255ba019.chunk.js.map": "/Mollydj/Meetup_App.git/static/js/2.255ba019.chunk.js.map",
-    "index.html": "/Mollydj/Meetup_App.git/index.html",
-    "precache-manifest.2379eb65c8e0413e7f1a0a3d4d23fe1e.js": "/Mollydj/Meetup_App.git/precache-manifest.2379eb65c8e0413e7f1a0a3d4d23fe1e.js",
-    "service-worker.js": "/Mollydj/Meetup_App.git/service-worker.js",
-    "static/css/main.5f361e03.chunk.css.map": "/Mollydj/Meetup_App.git/static/css/main.5f361e03.chunk.css.map",
-    "static/js/2.255ba019.chunk.js.LICENSE.txt": "/Mollydj/Meetup_App.git/static/js/2.255ba019.chunk.js.LICENSE.txt",
-    "static/media/logo.svg": "/Mollydj/Meetup_App.git/static/media/logo.5d5d9eef.svg"
+    "main.css": "/Meetup_App/static/css/main.5f361e03.chunk.css",
+    "main.js": "/Meetup_App/static/js/main.e1e67c1e.chunk.js",
+    "main.js.map": "/Meetup_App/static/js/main.e1e67c1e.chunk.js.map",
+    "runtime-main.js": "/Meetup_App/static/js/runtime-main.09384cc9.js",
+    "runtime-main.js.map": "/Meetup_App/static/js/runtime-main.09384cc9.js.map",
+    "static/js/2.255ba019.chunk.js": "/Meetup_App/static/js/2.255ba019.chunk.js",
+    "static/js/2.255ba019.chunk.js.map": "/Meetup_App/static/js/2.255ba019.chunk.js.map",
+    "index.html": "/Meetup_App/index.html",
+    "precache-manifest.a92bdfebb77b52c022b3ef9a6ec4898c.js": "/Meetup_App/precache-manifest.a92bdfebb77b52c022b3ef9a6ec4898c.js",
+    "service-worker.js": "/Meetup_App/service-worker.js",
+    "static/css/main.5f361e03.chunk.css.map": "/Meetup_App/static/css/main.5f361e03.chunk.css.map",
+    "static/js/2.255ba019.chunk.js.LICENSE.txt": "/Meetup_App/static/js/2.255ba019.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/Meetup_App/static/media/logo.5d5d9eef.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.211c9555.js",
+    "static/js/runtime-main.09384cc9.js",
     "static/js/2.255ba019.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.561c6cf0.chunk.js"
+    "static/js/main.e1e67c1e.chunk.js"
   ]
 }
