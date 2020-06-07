@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
+import "./Event";
 
 class NumberOfEvents extends Component {
   state = {
     eventsShown: "36",
-    details: false,
   };
 
   handleInputChanged = (event) => {
@@ -14,16 +14,11 @@ class NumberOfEvents extends Component {
   };
 
 
-  handleShowDetails = (event) => { 
-    this.state.details === false ? this.setState({ details: true}) : this.setState({ details: false});
-  };
-
 
   render() {
     return (
       <div className="NumberOfEvents" >
-        <div className="EventDetails" value={this.state.details} onClick={this.handleShowDetails}> </div>
-
+        <Event/>
         <input
           type="text"
           className="EventsEntry"

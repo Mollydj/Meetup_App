@@ -26,18 +26,6 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.state('eventsShown')).toBe('72');
   });
 
-  test('show details on click', () => {
-    NumberOfEventsWrapper.find('.EventDetails').at(0).simulate('click');
-    expect(NumberOfEventsWrapper.state('details')).toBe(true);
-    //console.log(NumberOfEventsWrapper.state('details'))
-  });
 
-  test('hide details on click', () => {
-    NumberOfEventsWrapper.find('.EventDetails').at(0).simulate('click');
-    expect(NumberOfEventsWrapper.state('details')).toBe(false);
-    //console.log(NumberOfEventsWrapper.state('details'))
-  });
-  
-  
 
 });
