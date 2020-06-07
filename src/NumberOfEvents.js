@@ -13,10 +13,16 @@ class NumberOfEvents extends Component {
     //Takes the value from the input updates the state of 'query' based on that value
   };
 
+
+  handleShowDetails = (event) => { 
+    this.state.details === false ? this.setState({ details: true}) : this.setState({ details: false});
+  };
+
+
   render() {
     return (
-      <div className="NumberOfEvents">
-        <div className="EventDetails"> </div>
+      <div className="NumberOfEvents" >
+        <div className="EventDetails" value={this.state.details} onClick={this.handleShowDetails}> </div>
 
         <input
           type="text"

@@ -10,6 +10,8 @@ describe('<NumberOfEvents /> component', () => {
         NumberOfEventsWrapper = shallow(<NumberOfEvents/>);
     });
 
+    // FEATURE 2
+
   test('render number of events shown on page', () => {
     expect(NumberOfEventsWrapper.find('.NumberOfEvents')).toHaveLength(1);
   });
@@ -24,6 +26,18 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.state('eventsShown')).toBe('72');
   });
 
+  test('show details on click', () => {
+    NumberOfEventsWrapper.find('.EventDetails').at(0).simulate('click');
+    expect(NumberOfEventsWrapper.state('details')).toBe(true);
+    //console.log(NumberOfEventsWrapper.state('details'))
+  });
+
+  test('hide details on click', () => {
+    NumberOfEventsWrapper.find('.EventDetails').at(0).simulate('click');
+    expect(NumberOfEventsWrapper.state('details')).toBe(false);
+    //console.log(NumberOfEventsWrapper.state('details'))
+  });
+  
   
 
 });

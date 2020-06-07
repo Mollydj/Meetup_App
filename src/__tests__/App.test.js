@@ -12,6 +12,8 @@ describe('<App/> component', () => {
         AppWrapper = shallow(<App/>);
     });
 
+    // FEATURE 1 
+
     test('render list of events', () => { // test description
         //const AppWrapper = shallow(<App />); //renders component allos you to call shallow rendered App component
         expect(AppWrapper.find(EventList)).toHaveLength(1); // search for the event list 
@@ -21,6 +23,8 @@ describe('<App/> component', () => {
     test('render CitySearch', () => {
         expect(AppWrapper.find(CitySearch)).toHaveLength(1);
     });
+
+    // FEATURE 2
 
     test('render number of events shown on page', () => {
         const NumberOfEventsWrapper = shallow(<App />);
