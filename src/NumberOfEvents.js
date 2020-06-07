@@ -3,7 +3,7 @@ import "./App.css";
 
 class NumberOfEvents extends Component {
   state = {
-    eventsShown: "",
+    eventsShown: "36",
     details: false,
   };
 
