@@ -6,24 +6,30 @@ class Event extends Component {
   };
 
   handleShowDetails = () => {
-//    this.state.details = this.setState({ details: !true });
+    //    this.state.details = this.setState({ details: !true });
     this.state.details === false
       ? this.setState({ details: true })
       : this.setState({ details: false });
   };
 
+
+  
+
   render() {
-    const event = this.props.event ;
+    const event = this.props.event;
+    const people = this.props.event.yes_rsvp_count > 1 ? ' people attening' : ' person going';
+
     return (
       <div className="Event">
-            <div className="EventName">{event.name}</div>
-            
-        <div className="EventDetails">
+        {event.local_time} |
+        {event.local_date}
+        <div className="EventName">{event.name}</div>
+        {event.yes_rsvp_count}  {people} 
         {event.group.localized_location}
-        </div>
+        <div className="EventDetails"></div>
         <button className="detailsButton" onClick={this.handleShowDetails}>
-            details
-          </button>
+          details
+        </button>
       </div>
     );
   }
