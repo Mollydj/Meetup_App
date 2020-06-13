@@ -4,16 +4,13 @@ import "./Event";
 
 class NumberOfEvents extends Component {
   state = {
-    page: 32,
+    eventsShown: 32,
   };
 
   handleInputChanged = (event) => {
     const value = event.target.value;
-    this.setState({ page: value });
-    //Takes the value from the input updates the state of 'query' based on that value
-  };
-
-
+    this.setState({ eventsShown: value });
+  }
 
   render() {
     return (
@@ -22,7 +19,7 @@ class NumberOfEvents extends Component {
         <input
           type="text"
           className="EventsEntry"
-          value={this.state.page}
+          value={this.state.eventsShown}
           onChange={this.handleInputChanged}
         />
       </div>

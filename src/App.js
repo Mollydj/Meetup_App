@@ -14,7 +14,7 @@ componentDidMount(){
     events: [],
     lat:'',
     long:'',
-    page: null
+    page: ''
   }
   
   updateEvents = (lat, lon, page) => {
