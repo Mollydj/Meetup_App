@@ -1,6 +1,8 @@
 import { mockEvents } from "./mock-events";
 import axios from "axios";
 
+
+
 async function getSuggestions(query) {
   if (window.location.href.startsWith("http://localhost")) {
     return [
@@ -84,7 +86,7 @@ function getAccessToken() {
     }
     const refreshToken = localStorage.getItem("refresh_token");
     return getOrRenewAccessToken("renew", refreshToken);
-  }
+}
 
     //
 
@@ -114,5 +116,6 @@ function getAccessToken() {
     return tokenInfo.data.access_token;
   }
 }
+
 
 export { getSuggestions, getEvents };

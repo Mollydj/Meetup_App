@@ -11,6 +11,8 @@ class App extends Component {
     events: []
   }
 
+  
+
   updateEvents = (lat, lon) => {
     getEvents(lat, lon).then(events => this.setState({ events }));
   }
