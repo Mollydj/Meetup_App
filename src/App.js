@@ -8,13 +8,15 @@ import { getEvents } from './api';
 class App extends Component {
 
 componentDidMount(){
-  getEvents().then(response => this.setState({ events: response }));
+  getEvents().then(response => this.setState({ events: response, lat, lon }));
 }
   state = {
     events: [],
     lat:'',
     long:'',
   }
+
+
 
   render() {
     return (
