@@ -7,8 +7,8 @@ import { getEvents } from './api';
 
 class App extends Component {
 
-componentDidMount(response, lat, lon){
-  getEvents().then(response => this.setState({ events: response, lat, lon }));
+componentDidMount(){
+  getEvents().then(response => this.setState({ events: response }));
 }
   state = {
     events: [],
@@ -16,7 +16,7 @@ componentDidMount(response, lat, lon){
     long:'',
   }
 
-
+  
 
   render() {
     return (
