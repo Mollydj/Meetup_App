@@ -101,7 +101,7 @@ async function getOrRenewAccessToken(type, key) {
     url = "https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/token/" + key;
   } else if (type === "renew") {
     // Lambda endpoint to get token by refresh_token
-    url = "https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/refreshtoken/" + key;
+    url = "https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/refresh/" + key;
   }
 
   // Use Axios to make a GET request to the endpoint
