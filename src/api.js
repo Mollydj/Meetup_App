@@ -28,6 +28,7 @@ async function getSuggestions(query) {
   }
 
   const token = await getAccessToken();
+  
   if (token) {
     const url =
       "https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" +
@@ -44,6 +45,11 @@ async function getEvents(lat, lon) {
   if (window.location.href.startsWith("http://localhost")) {
     return mockEvents.events;
   }
+  if (!navigator.onLine) {
+    const events = localStorage.getItem('lastEvents');
+    return JSON.parse(events);
+  }
+
   const token = await getAccessToken();
 
   if (token) {
@@ -76,8 +82,6 @@ function getAccessToken() {
       return getOrRenewAccessToken("get", code);
     }
 
-    //
-
     const lastSavedTime = localStorage.getItem("last_saved_time");
 
     if (accessToken && Date.now() - lastSavedTime < 3600000) {
@@ -85,7 +89,7 @@ function getAccessToken() {
     }
     const refreshToken = localStorage.getItem("refresh_token");
     return getOrRenewAccessToken("renew", refreshToken);
-  }
+  };
 
   //
 
@@ -94,10 +98,10 @@ async function getOrRenewAccessToken(type, key) {
   let url;
   if (type === "get") {
     // Lambda endpoint to get token by code
-    url = "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + key;
+    url = "https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/token/" + key;
   } else if (type === "renew") {
     // Lambda endpoint to get token by refresh_token
-    url = "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/refresh/" + key;
+    url = "https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/refresh/" + key;
   }
 
   // Use Axios to make a GET request to the endpoint
@@ -112,4 +116,4 @@ async function getOrRenewAccessToken(type, key) {
   return tokenInfo.data.access_token;
 }
 
-export { getSuggestions, getEvents };
+export { getSuggestions, getEvents, getAccessToken, getOrRenewAccessToken };
