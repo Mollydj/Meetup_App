@@ -1,8 +1,6 @@
 import { mockEvents } from "./mock-events";
 import axios from "axios";
 
-
-
 async function getSuggestions(query) {
   if (window.location.href.startsWith("http://localhost")) {
     return [
@@ -43,28 +41,29 @@ async function getSuggestions(query) {
 }
 
 async function getEvents(lat, lon) {
-  if (window.location.href.startsWith('http://localhost')) {
+  if (window.location.href.startsWith("http://localhost")) {
     return mockEvents.events;
   }
-    const token = await getAccessToken();
-    
-    if (token) {
-      let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
-        + '&access_token=' + token;
-      // lat, lon is optional; if you have a lat and lon, you can add them
-      if (lat && lon) {
-        url += '&lat=' + lat + '&lon=' + lon;
-      }
-      const result = await axios.get(url);
-      return result.data.events;
+  const token = await getAccessToken();
+
+  if (token) {
+    let url =
+      "https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public" +
+      "&access_token=" +
+      token;
+    // lat, lon is optional; if you have a lat and lon, you can add them
+    if (lat && lon) {
+      url += "&lat=" + lat + "&lon=" + lon;
     }
+    const result = await axios.get(url);
+    return result.data.events;
   }
+}
 
 ////////
 function getAccessToken() {
   const accessToken = localStorage.getItem("access_token");
 
-  function getItem() {
     if (!accessToken) {
       const searchParams = new URLSearchParams(window.location.search);
       const code = searchParams.get("code");
@@ -86,25 +85,19 @@ function getAccessToken() {
     }
     const refreshToken = localStorage.getItem("refresh_token");
     return getOrRenewAccessToken("renew", refreshToken);
-}
+  }
 
-    //
+  //
 
-
-}
 
 async function getOrRenewAccessToken(type, key) {
   let url;
   if (type === "get") {
     // Lambda endpoint to get token by code
-    url =
-      "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/token/" +
-      key;
+    url = "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/token/" + key;
   } else if (type === "renew") {
     // Lambda endpoint to get token by refresh_token
-    url =
-      "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/refresh/" +
-      key;
+    url = "https://c5usrytrsg.execute-api.eu-central-1.amazonaws.com/dev/api/refresh/" + key;
   }
 
   // Use Axios to make a GET request to the endpoint
@@ -118,6 +111,5 @@ async function getOrRenewAccessToken(type, key) {
   // Return the access_token
   return tokenInfo.data.access_token;
 }
-
 
 export { getSuggestions, getEvents };
