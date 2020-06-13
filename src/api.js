@@ -44,7 +44,19 @@ async function getEvents(lat, lon) {
   if (window.location.href.startsWith('http://localhost')) {
     return mockEvents.events;
   }
-}
+    const token = await getAccessToken();
+    
+    if (token) {
+      let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
+        + '&access_token=' + token;
+      // lat, lon is optional; if you have a lat and lon, you can add them
+      if (lat && lon) {
+        url += '&lat=' + lat + '&lon=' + lon;
+      }
+      const result = await axios.get(url);
+      return result.data.events;
+    }
+  }
 
 ////////
 function getAccessToken() {
@@ -62,6 +74,9 @@ function getAccessToken() {
       }
       return getOrRenewAccessToken("get", code);
     }
+
+    //
+
     const lastSavedTime = localStorage.getItem("last_saved_time");
 
     if (accessToken && Date.now() - lastSavedTime < 3600000) {
@@ -70,6 +85,8 @@ function getAccessToken() {
     const refreshToken = localStorage.getItem("refresh_token");
     return getOrRenewAccessToken("renew", refreshToken);
   }
+
+    //
 
   async function getOrRenewAccessToken(type, key) {
     let url;
