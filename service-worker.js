@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Meetup_App/precache-manifest.8bdfe71d4e3e52016fdc3e25444224fb.js"
+  "/Meetup_App/precache-manifest.1b5aeee775d80e93f362b86961c4320e.js"
 );
 
 self.addEventListener('message', (event) => {
