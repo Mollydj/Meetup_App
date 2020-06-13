@@ -4,7 +4,7 @@ import "./Event";
 
 class NumberOfEvents extends Component {
   state = {
-    eventsShown: "36",
+    eventsShown: 32,
   };
 
   handleInputChanged = (event) => {
@@ -18,7 +18,7 @@ class NumberOfEvents extends Component {
   render() {
     return (
       <div className="NumberOfEvents" >
-        <Event/>
+        
         <input
           type="text"
           className="EventsEntry"
