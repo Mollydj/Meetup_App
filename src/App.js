@@ -16,29 +16,21 @@ componentDidMount(){
     long:'',
     page: null
   }
-
+  
   updateEvents = (lat, lon, page) => {
     if (lat && lon) {
       getEvents(lat, lon, this.state.page).then(response =>
         this.setState({ events: response, lat, lon })
       );
-    } 
-    else {
+    } else if (page) {
+      getEvents(this.state.lat, this.state.lon, page).then(response =>
+        this.setState({ events: response, page })
+      );
+    } else {
       getEvents(this.state.lat, this.state.lon, this.state.page).then(
         response => this.setState({ events: response })
       );
     }
-
-    if(lat && lon) {
-      getEvents(lat, lon, this.state.page).then(response => this.setState({ events: response, lat, lon }));
-    }
-    else if (page) {
-      getEvents(this.state.lat, this.state.lon, page).then(response => this.setState({ events: response, page }));
-    }
-    else {
-      getEvents(this.state.lat, this.state.lon, this.state.page).then(response => this.setState({ events: response }));
-    }
-
   };
 
 
