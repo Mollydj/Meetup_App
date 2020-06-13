@@ -17,12 +17,13 @@ class Event extends Component {
     return (
       <div className="Event">
             <div className="EventName">{event.name}</div>
+            
         <div className="EventDetails">
-      
-          <button className="detailsButton" onClick={this.handleShowDetails}>
+        {event.group.localized_location}
+        </div>
+        <button className="detailsButton" onClick={this.handleShowDetails}>
             details
           </button>
-        </div>
       </div>
     );
   }

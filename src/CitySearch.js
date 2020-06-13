@@ -20,7 +20,10 @@ class CitySearch extends Component {
         this.props.updateEvents(lat, lon);
       }
 
+
+
     render() {
+        console.log(this.state)
         return (
             <div className="CitySearch">
                 <input type="text" className="city" value={this.state.query} onChange={this.handleInputChanged}/>

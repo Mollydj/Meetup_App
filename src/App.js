@@ -16,7 +16,17 @@ componentDidMount(){
     long:'',
   }
 
-  
+  updateEvents = (lat, lon, page) => {
+    if (lat && lon) {
+      getEvents(lat, lon, this.state.page).then(response =>
+        this.setState({ events: response, lat, lon })
+      );
+    } else {
+      getEvents(this.state.lat, this.state.lon, this.state.page).then(
+        response => this.setState({ events: response })
+      );
+    }
+  };
 
   render() {
     return (
