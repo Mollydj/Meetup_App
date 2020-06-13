@@ -8,7 +8,7 @@ import { getEvents } from './api';
 class App extends Component {
 
 componentDidMount(){
-  getEvents(lat, lon).then(events => this.setState({ events }));
+  getEvents().then(response => this.setState({ events: response }));
 }
 
   state = {
