@@ -21,13 +21,13 @@ class Event extends Component {
 
     return (
       <div className="Event">
-        {event.local_time} |
+        {event.local_time}
         {event.local_date}
-        <div className="EventName">{event.name}</div>
-        {event.yes_rsvp_count}  {people} 
+        <div className="name"><b>{event.name}</b></div>
+        {event.yes_rsvp_count}{people}<br/>
         {event.group.localized_location}
         <div className="EventDetails"></div>
-        <button className="detailsButton" onClick={this.handleShowDetails}>
+        <button className="details-btn" onClick={this.handleShowDetails}>
           details
         </button>
       </div>

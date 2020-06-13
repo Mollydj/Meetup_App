@@ -1,4 +1,7 @@
-  
+body {
+  font-family: 'Rajdhani', sans-serif;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
@@ -15,6 +18,10 @@ ul {
 
 p {
   margin: 5px 0;
+}
+
+h1 {
+  color: red;
 }
 
 input[type="text"], input[type="number"] {
@@ -78,10 +85,13 @@ input[type="text"], input[type="number"] {
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  background-color: red;
+  color: white;
 }
 
 .name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 600;
 }
 
