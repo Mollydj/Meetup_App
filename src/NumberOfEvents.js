@@ -10,9 +10,11 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ eventsShown: value });
+    
   }
 
   render() {
+    console.log(this.state.eventsShown)
     return (
       <div className="NumberOfEvents" >
         
