@@ -4,7 +4,7 @@ import App from '../App';
 import EventList from '../EventList';
 import CitySearch from '../CitySearch';
 import NumberOfEvents from '../NumberOfEvents';
-import {mockEvents} from '../mock-events';
+import { mockEvents } from '../mock-events';
 
 
 describe('<App/> component', () => {
@@ -44,7 +44,7 @@ describe('<App /> integration', () => {
         const CitySearchWrapper = AppWrapper.find(CitySearch);
         CitySearchWrapper.instance().handleItemClicked('value', 1.1, 1.2);
         expect(AppWrapper.instance().updateEvents).toHaveBeenCalledWith(1.1, 1.2);
-        AppWrapper.unmount();
+        //AppWrapper.unmount();
       });
 
       test('change state after getting list of events', async () => {

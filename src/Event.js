@@ -32,10 +32,17 @@ class Event extends Component {
         {people}
         <br />
         <p className="going">{eventLocation}</p>
-        <div className="EventDetails"></div>
         <button className="details-btn" onClick={this.handleShowDetails}>
           details
         </button>
+        {this.state.details && (
+        <div className="extra">
+          {event.description}<br/>
+          <p className="going">{event.visibility}</p>
+          <a href={event.link}>Event Link</a>
+        </div>
+        
+        )}
       </div>
     );
   }

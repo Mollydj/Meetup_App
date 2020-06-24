@@ -14,7 +14,6 @@ class NumberOfEvents extends Component {
   }
 
   render() {
-    console.log(this.state.eventsShown)
     return (
       <div className="NumberOfEvents" >
         

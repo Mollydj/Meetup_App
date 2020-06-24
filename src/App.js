@@ -34,16 +34,13 @@ componentDidMount(){
     }
   };
 
-
-
-
   render() {
     return (
       <div className="App">
         <h1>Meetup React API</h1>
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents/>
-        <EventList events={this.state.events} />
+        <EventList events={this.state.events} page={this.state.page} />
       </div>
     );
   }
