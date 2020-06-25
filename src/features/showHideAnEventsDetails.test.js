@@ -15,7 +15,7 @@ defineFeature(feature, (test) => {
     given("user opens the app", () => {
         AppWrapper = mount(<App />);
     }); 
-    //done
+    //done 
 
     when("the user hasn't clicked on anything", () => {
         //remains empty

@@ -11,7 +11,7 @@ class NumberOfEvents extends Component {
     const value = event.target.value;
     this.setState({ eventsShown: value });
     
-  }
+  } 
 
   render() {
     return (
