@@ -16,11 +16,7 @@ defineFeature(feature, (test) => {
     then,
   }) => {
     given("user hasn’t searched for any city", () => {});
-
-    when("the user opens the app", () => {
-      AppWrapper = mount(<App />);
-    });
-
+    when("the user opens the app", () => {AppWrapper = mount(<App />);});
     then(
       "the user should see the list of upcoming events from their location",
       () => {
@@ -56,34 +52,50 @@ defineFeature(feature, (test) => {
     );
   });
 
-  test('User can select a city from the suggested list', ({ given, and, when, then }) => {
+  test("User can select a city from the suggested list", ({
+    given,
+    and,
+    when,
+    then,
+  }) => {
     let AppWrapper;
 
-    given('user was typing “Brooklyn” in the city textbox', () => {
-        AppWrapper = mount (<App/>);
-        AppWrapper.find('.city').simulate('change', { target: { value: 'Brooklyn'} });
-
+    given("user was typing “Brooklyn” in the city textbox", () => {
+      AppWrapper = mount(<App />);
+      AppWrapper.find(".city").simulate("change", {
+        target: { value: "Brooklyn" },
+      });
     });
 
-    and('the list of suggested cities is showing', () => {
-        AppWrapper.update();
-        expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
-    });
-   
-    when('the user selects a city (e.g., “Brooklyn, New York”) from the list', () => {
-        AppWrapper.find('.suggestions li').at(0).simulate('click');
+    and("the list of suggested cities is showing", () => {
+      AppWrapper.update();
+      expect(AppWrapper.find(".suggestions li")).toHaveLength(2);
     });
 
-    then('their city should be changed to that city (i.e., “Brooklyn, New York”)', () => {
+    when(
+      "the user selects a city (e.g., “Brooklyn, New York”) from the list",
+      () => {
+        AppWrapper.find(".suggestions li").at(0).simulate("click");
+      }
+    );
+
+    then(
+      "their city should be changed to that city (i.e., “Brooklyn, New York”)",
+      () => {
         const CitySearchWrapper = AppWrapper.find(CitySearch);
-        expect(CitySearchWrapper.state('query')).toBe('Brooklyn, New York, USA');
-    });
+        expect(CitySearchWrapper.state("query")).toBe(
+          "Brooklyn, New York, USA"
+        );
+      }
+    );
 
-    and('the user should receive a list of upcoming events in that city', () => {
-        expect(AppWrapper.find('.Event')).toHaveLength(mockEvents.events.length);
-    });
-});
-
-
-
+    and(
+      "the user should receive a list of upcoming events in that city",
+      () => {
+        expect(AppWrapper.find(".Event")).toHaveLength(
+          mockEvents.events.length
+        );
+      }
+    );
+  });
 });

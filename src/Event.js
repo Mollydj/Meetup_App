@@ -19,6 +19,7 @@ class Event extends Component {
       this.props.event.yes_rsvp_count > 1
         ? " people attening"
         : " person going";
+    
 
     return (
       <div className="Event">
