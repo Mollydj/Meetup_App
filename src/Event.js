@@ -40,7 +40,7 @@ class Event extends Component {
         <div className="extra">
           {event.description}<br/>
           <p className="going">{event.visibility}</p>
-          <a target="_blank" href={event.link}>Event Link</a>
+          <a href={event.link} target="_blank">Event Link</a>
         </div>
         
         )}
