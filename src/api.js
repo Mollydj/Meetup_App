@@ -27,18 +27,18 @@ async function getSuggestions(query) {
     ];
   }
 
-  const token = await getAccessToken();
+  // const token = await getAccessToken();
   
-  if (token) {
-    const url =
-      "https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" +
-      query +
-      "&access_token=" +
-      token;
-    const result = await axios.get(url);
-    return result.data;
-  }
-  return [];
+  // if (token) {
+  //   const url =
+  //     "https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=" +
+  //     query +
+  //     "&access_token=" +
+  //     token;
+  //   const result = await axios.get(url);
+  //   return result.data;
+  // }
+  // return [];
 }
 
 async function getEvents(lat, lon, page) {
@@ -121,4 +121,4 @@ async function getOrRenewAccessToken(type, key) {
   return tokenInfo.data.access_token;
 }
 
-export { getSuggestions, getEvents, getOrRenewAccessToken };
+export { getSuggestions, getEvents };
