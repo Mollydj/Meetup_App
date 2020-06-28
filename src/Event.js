@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Event extends Component {
   state = {
     details: false,
+    events:[]
   };
 
   handleShowDetails = () => {
@@ -40,7 +41,7 @@ class Event extends Component {
         <div className="extra">
           {event.description}<br/>
           <p className="going">{event.visibility}</p>
-          <a href={event.link} target="_blank">Event Link</a>
+          <a href={event.link}>Event Link</a>
         </div>
         
         )}

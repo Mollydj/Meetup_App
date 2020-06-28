@@ -4,6 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents } from "./api";
+import './api';
 
 class App extends Component {
   state = {
@@ -11,6 +12,7 @@ class App extends Component {
     lat: "",
     long: "",
     page: null,
+    eventsShown: null
   };
 
   componentDidMount() {
@@ -18,30 +20,21 @@ class App extends Component {
   }
 
   updateEvents = (lat, lon, page) => {
-    if (!navigator.onLine) {
-      this.setState({
-        warningText:
-          "You are currently offline, events are loaded from last session",
-      });
-    } else {
-      this.setState({ warningText: "" });
-    }
+    // We use state to store value of lat, lon, page if user has changed it.
     if (lat && lon) {
-      getEvents(lat, lon, this.state.page).then((events) =>
+      getEvents(lat, lon, this.state.page).then(events =>
         this.setState({ events, lat, lon })
       );
     } else if (page) {
-      getEvents(this.state.lat, this.state.lon, page).then((events) =>
+      getEvents(this.state.lat, this.state.lon, page).then(events =>
         this.setState({ events, page })
       );
     } else {
-      getEvents(
-        this.state.lat,
-        this.state.lon,
-        this.state.page
-      ).then((events) => this.setState({ events }));
+      getEvents(this.state.lat, this.state.lon, this.state.page).then(events =>
+        this.setState({ events })
+      );
     }
-  };
+  }
 
   render() {
     return (
@@ -56,3 +49,4 @@ class App extends Component {
 }
 
 export default App;
+
