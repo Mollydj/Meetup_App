@@ -9,10 +9,7 @@ import './api';
 class App extends Component {
   state = {
     events: [],
-    lat: "",
-    long: "",
     page: null,
-    eventsShown: null
   };
 
   componentDidMount() {
@@ -20,20 +17,19 @@ class App extends Component {
   }
 
   updateEvents = (lat, lon, page) => {
-    // We use state to store value of lat, lon, page if user has changed it.
     if (lat && lon) {
-      getEvents(lat, lon, this.state.page).then(events =>
+      getEvents(lat, lon, this.state.page).then(events => 
         this.setState({ events, lat, lon })
-      );
+        );
     } else if (page) {
-      getEvents(this.state.lat, this.state.lon, page).then(events =>
+      getEvents(this.state.lat, this.state.lon, page).then(events => 
         this.setState({ events, page })
-      );
+        );
     } else {
-      getEvents(this.state.lat, this.state.lon, this.state.page).then(events =>
+      getEvents(this.state.lat, this.state.lon, this.state.page).then(events => 
         this.setState({ events })
       );
-    }
+    } 
   }
 
   render() {
