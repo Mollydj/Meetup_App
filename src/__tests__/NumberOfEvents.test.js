@@ -20,11 +20,11 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.EventsEntry')).toHaveLength(1);
   });
 
-  test('change state when text input changes', () => {
-    const eventObject = { target: { value: '72' }};
-    NumberOfEventsWrapper.find('.EventsEntry').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('eventsShown')).toBe('72');
-  });
+  // test('change state when text input changes', () => {
+  //   const eventObject = { target: { value: '72' }};
+  //   NumberOfEventsWrapper.find('.EventsEntry').simulate('change', eventObject);
+  //   expect(NumberOfEventsWrapper.state('eventsShown')).toBe('72');
+  // });
 
 
 

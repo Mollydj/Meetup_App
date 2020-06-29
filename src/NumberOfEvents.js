@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import App from './App';
 
 class NumberOfEvents extends Component {
   state = {
@@ -8,7 +9,7 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ eventsShown: value });
-    this.props.updateEvents(null, null, value);
+    //this.props.updateEvents(null, null, value);
   }
 
   render() {

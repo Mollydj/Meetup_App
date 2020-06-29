@@ -1,8 +1,3 @@
-// FEATURE 2: SHOW/HIDE AN EVENT DETAILS
-// Scenario 1: An event element is collapsed by default.
-// Scenario 2: User can expand an event to see its details.
-// Scenario 3: User can collapse an event to hide its details.
-
 import puppeteer from 'puppeteer';
 
 describe('show/hide an event details', () => {
@@ -35,7 +30,7 @@ describe('show/hide an event details', () => {
 
     test ('Use can collapse an event to hide its details', async () => {
         await page.click('.Event .details-btn');
-
+ 
         const extra = await page.$('.Event .extra');
         expect(extra).toBeNull();
     });

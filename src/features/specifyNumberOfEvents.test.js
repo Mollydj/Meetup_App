@@ -1,6 +1,6 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import React from "react";
-import { mount } from "enzyme";
+import { mount, shallow } from "enzyme";
 import App from "../App";
 import NumberOfEvents from '../NumberOfEvents';
 
@@ -11,7 +11,8 @@ defineFeature(feature, test => {
     let NumberWrapper;
 
     beforeAll(() => {
-        NumberWrapper = mount(<NumberOfEvents/>);
+        NumberWrapper = shallow(<NumberOfEvents  />);
+        AppWrapper = mount(<App/>);
     });
 
     test('When user hasn’t specified a number, 32 is the default number', ({ given, when, then }) => {
