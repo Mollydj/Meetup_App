@@ -30,6 +30,7 @@ class App extends Component {
         this.setState({ events })
       );
     } 
+    return this.updateEvents;
   }
 
   render() {

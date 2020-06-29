@@ -30,20 +30,22 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User can change the number of events they want to see', ({ given, when, then }) => {
+
+        test('User can change the number of events they want to see', ({ given, when, then }) => {
+            let AppWrapper;
+            given('user opened the app', () => {
+              AppWrapper = mount(<App />);
+            });
         
-        given('the events list has loaded', () => {
-            AppWrapper = mount(<App />);
-        });
-
-        when('the user changes the number events per page', () => {
-            const eventObject = { target: { value: 10 }};
-            NumberWrapper.find('.EventsEntry').simulate('change', eventObject);
-            expect(NumberWrapper.state('eventsShown')).toBe(10);
-        });
-
-        then('the number of items on the events list will change to the users preference.', () => {
-            expect(NumberWrapper.state('eventsShown')).toBe(10);
-        });
+            when('the user specified the number of events', () => {
+              const eventNumber = { target: { value: 5 } };
+              AppWrapper.find('.NumberOfEvents').simulate('change', eventNumber);
+            });
+        
+            then('the maximum of specified number of events will be displayed', () => {
+              const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+             // console.log(NumberOfEventsWrapper);
+             expect(NumberOfEventsWrapper.state('eventsShown')).toBe(32);
+            });
     });
 });
