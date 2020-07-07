@@ -24,7 +24,7 @@ class CitySearch extends Component {
             });
           }
         });
-        console.log(this.state);
+        console.log(this.state.infoText);
       }
 
     handleItemClicked = (value, lat, lon) => {
