@@ -11,7 +11,7 @@ class NumberOfEvents extends Component {
     this.setState({ eventsShown: value });
     this.props.updateEvents(null, null, value);
 
-    if (value && eventsShown.length === 0) {
+    if (value && this.state.length === 0) {
       this.setState({
         errorText: 'Positive numbers only please!',
       });
