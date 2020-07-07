@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import App, { updateEvents } from './App';
 
 class NumberOfEvents extends Component {
   state = {

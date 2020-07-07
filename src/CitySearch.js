@@ -24,7 +24,6 @@ class CitySearch extends Component {
             });
           }
         });
-        console.log(this.state.infoText);
       }
 
     handleItemClicked = (value, lat, lon) => {
@@ -37,7 +36,7 @@ class CitySearch extends Component {
     render() {
         return (
             <div className="CitySearch">
-               <InfoAlert text={this.state.InfoAlert}/>
+               <InfoAlert text={this.state.infoText} />
                 <input type="text" className="city" value={this.state.query} onChange={this.handleInputChanged}/>
                    
                     <ul className="suggestions">
