@@ -14,6 +14,7 @@ class NumberOfEvents extends Component {
     if (value <= 0) {
       this.setState({
         errorText: 'Positive numbers only please!',
+        eventtsShown:0
       });
       console.log(this.state);
     } else {
