@@ -9,21 +9,20 @@ class NumberOfEvents extends Component {
   handleInputChanged = (event) => {
     const value = event.target.value;
     this.setState({ eventsShown: value });
-    this.props.updateEvents(null, null, value);
+    
 
     if (value <= 0) {
       this.setState({
         errorText: 'Positive numbers only please!',
-        eventtsShown:0
       });
-      console.log(this.state);
+
     } else {
       this.setState({
-        errorText: '',
-      });
-      console.log(this.state);
+        errorText: ''
+      })
+      this.props.updateEvents(null, null, value);
     }
-
+      console.log(this.state)
   }
 
   render() {
