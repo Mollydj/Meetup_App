@@ -5,6 +5,7 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents } from "./api";
 import './api';
+import { OnlineAlert } from './Alert';
 
 class App extends Component {
   state = {
@@ -14,6 +15,23 @@ class App extends Component {
 
   componentDidMount() {
     this.updateEvents();
+
+    //
+
+    if (navigator.onLine) {
+      console.log('user is online');
+      this.setState({
+        onlineText: ''
+      })
+  }
+    else {
+      this.setState({
+        onlineText: ''
+      })
+      console.log('user is offline');
+  }
+ 
+    //
   }
 
   updateEvents = (lat, lon, page) => {
@@ -31,11 +49,17 @@ class App extends Component {
       );
     } 
     return this.updateEvents;
+
+    
   }
 
+  
+
   render() {
+    
     return (
       <div className="App">
+        <OnlineAlert text={this.state.onlineText} />
         <h1>Meetup React API</h1>
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
