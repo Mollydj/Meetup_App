@@ -113,10 +113,6 @@ async function getEvents(lat, lon, page) {
       if (events.length) {
         localStorage.setItem('lastEvents', JSON.stringify(events));
       }
-      const events = results.data.events;
-        if (events.length) {//Check if the events exist
-          localStorage.setItem('lastEvents', JSON.stringify(events));
-        }
       return events;
   }
   return [];
