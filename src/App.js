@@ -4,8 +4,8 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { getEvents } from "./api";
-import './api';
-import { OnlineAlert } from './Alert';
+import "./api";
+import { OnlineAlert } from "./Alert";
 
 class App extends Component {
   state = {
@@ -18,37 +18,37 @@ class App extends Component {
   }
 
   updateEvents = (lat, lon, page) => {
-    if (lat && lon) {
-      getEvents(lat, lon, this.state.page).then(events => 
-        this.setState({ events, lat, lon })
-        );
-    } else if (page) {
-      getEvents(this.state.lat, this.state.lon, page).then(events => 
-        this.setState({ events, page })
-        );
-    } else {
-      getEvents(this.state.lat, this.state.lon, this.state.page).then(events => 
-        this.setState({ events })
-      );
-    } 
-
-
-    if (navigator.onLine === false) {
+    if (!navigator.onLine) {
       this.setState({
-        onlineText: ''
-      })
-      console.log('user is offline');
-  }
-  
+        onlineText: "User offline",
+      });
+      console.log("user is offline");
+    } else {
+      this.setState({
+        onlineText: "",
+      });
+    }
+
+    if (lat && lon) {
+      getEvents(lat, lon, this.state.page).then((events) =>
+        this.setState({ events, lat, lon })
+      );
+    } else if (page) {
+      getEvents(this.state.lat, this.state.lon, page).then((events) =>
+        this.setState({ events, page })
+      );
+    } else {
+      getEvents(
+        this.state.lat,
+        this.state.lon,
+        this.state.page
+      ).then((events) => this.setState({ events }));
+    }
+
     return this.updateEvents;
-
-    
-  }
-
-  
+  };
 
   render() {
-    
     return (
       <div className="App">
         <OnlineAlert text={this.state.onlineText} />
@@ -62,4 +62,3 @@ class App extends Component {
 }
 
 export default App;
-
