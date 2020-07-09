@@ -18,13 +18,7 @@ class App extends Component {
 
     //
 
-    if (navigator.onLine) {
-      console.log('user is online');
-      this.setState({
-        onlineText: ''
-      })
-  }
-    else {
+    if (navigator.onLine === false) {
       this.setState({
         onlineText: ''
       })
