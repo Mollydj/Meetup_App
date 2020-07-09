@@ -20,7 +20,7 @@ class App extends Component {
   updateEvents = (lat, lon, page) => {
     if (!navigator.onLine) {
       this.setState({
-        onlineText: "User offline",
+        onlineText: "<marquee>Working Offline...</marquee> ",
       });
       console.log("user is offline");
     } else {
