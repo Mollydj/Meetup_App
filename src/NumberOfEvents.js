@@ -22,7 +22,6 @@ class NumberOfEvents extends Component {
       })
       this.props.updateEvents(null, null, value);
     }
-      console.log(this.state)
   }
 
   render() {
