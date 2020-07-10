@@ -6,6 +6,10 @@ import NumberOfEvents from "./NumberOfEvents";
 import { getEvents } from "./api";
 import "./api";
 import { OnlineAlert } from "./Alert";
+import moment from "moment";
+import {
+  ScatterChart, Scatter, XAxis, YAxis, ZAxis, Legend, CartesianGrid, Tooltip, ResponsiveContainer
+} from 'recharts';
 
 class App extends Component {
   state = {
@@ -22,7 +26,6 @@ class App extends Component {
       this.setState({
         onlineText: "Working Offline... ",
       });
-      console.log("user is offline");
     } else {
       this.setState({
         onlineText: "",
@@ -48,6 +51,30 @@ class App extends Component {
     return this.updateEvents;
   };
 
+  countEventsOnADate = (date) => {
+    let count = 0;
+    for (let i = 0; i < this.state.events.length; i += 1) {
+      if (this.state.events[i].local_date === date) {
+        count += 1;
+      }
+    }
+    return count;
+  };
+
+  getData = () => {
+    const next7Days = []; // Create empty array for the next 7 days
+    const currentDate = moment(); // Today
+    // Loop 7 times for next 7 days
+    for (let i = 0; i < 7; i += 1) {
+      currentDate.add(1, "days"); // Add 1 day to current date, currentDate changes
+      const dateString = currentDate.format("YYYY-MM-DD"); // Format the date
+      // Use the countEventsOnADate function to count #events on this date
+      const count = this.countEventsOnADate(dateString);
+      next7Days.push({ date: dateString, number: count }); // Add this date and number to the list
+    }
+    return next7Days;
+  };
+
   render() {
     return (
       <div className="App">
@@ -55,6 +82,22 @@ class App extends Component {
         <h1>Meetup React API</h1>
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
+
+        <ResponsiveContainer height={400}>
+        <ScatterChart
+          margin={{ top: 20, right: 20, bottom: 10, left: 10 }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis type="category" dataKey="date" name="date"/>
+          <YAxis type="number" dataKey="number" name="number of events" />
+          <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
+          <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+          <Legend />
+          <Scatter data={this.getData()} fill="#FF0000" />
+          
+        </ScatterChart>
+        </ResponsiveContainer>
+
         <EventList events={this.state.events} />
       </div>
     );
