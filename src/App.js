@@ -8,7 +8,7 @@ import "./api";
 import { OnlineAlert } from "./Alert";
 import moment from "moment";
 import {
-  ScatterChart, Scatter, XAxis, YAxis, ZAxis, Legend, CartesianGrid, Tooltip, ResponsiveContainer
+  ScatterChart, Scatter, XAxis, YAxis, Legend, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
 class App extends Component {
@@ -72,7 +72,11 @@ class App extends Component {
       const count = this.countEventsOnADate(dateString);
       next7Days.push({ date: dateString, number: count }); // Add this date and number to the list
     }
+    //console.log(next7Days);
     return next7Days;
+
+    
+
   };
 
   render() {
@@ -90,7 +94,6 @@ class App extends Component {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis type="category" dataKey="date" name="date"/>
           <YAxis type="number" dataKey="number" name="number of events" />
-          <ZAxis dataKey="z" range={[64, 144]} name="score" unit="km" />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
           <Legend />
           <Scatter data={this.getData()} fill="#FF0000" />

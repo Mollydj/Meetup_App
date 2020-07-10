@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
 
 class Event extends Component {
   state = {
@@ -15,19 +15,13 @@ class Event extends Component {
   };
 
   getData = () => {
-    const openSeats = []; // Create empty array for the next 7 days
-    console.log(this.state.events)
-    const yesCount = 4;
-    const waitList = 1;
-    //const currentDate = moment(); // Today
-    // Loop 7 times for next 7 days
-    //for (let i = 0; i < 7; i += 1) {
-    // currentDate.add(1, "days"); // Add 1 day to current date, currentDate changes
-    //  const dateString = currentDate.format("YYYY-MM-DD"); // Format the date
-    // Use the countEventsOnADate function to count #events on this date
-    // const count = this.countEventsOnADate(dateString);
-    openSeats.push({ yes_rsvp_count: yesCount, waitlist_count: waitList }); // Add this date and number to the list
-
+    const yesCount = this.props.event.yes_rsvp_count;
+    const spotsRemain = this.props.event.rsvp_limit - yesCount;
+    const openSeats = [
+      { name: "Attendees", yes_rsvp_count: this.props.event.yes_rsvp_count },
+      { name: "Spots Remaining", rsvp_limit: spotsRemain },
+      { name: "Total", rsvp_limit: this.props.event.rsvp_limit },
+    ];     
     return openSeats;
   };
 
@@ -48,30 +42,32 @@ class Event extends Component {
           <b>{event.name}</b>
 
           <ResponsiveContainer height={400}>
-          <PieChart>
+            <PieChart>
               <Pie
-                isAnimationActive={false}
-                dataKey="yes_rsvp_count"
+                dataKey="rsvp_limit"
+                name="Limit"
                 data={this.getData()}
-                cx={200}
-                cy={200}
+                cx="50%"
+                cy="50%"
                 outerRadius={80}
                 fill="#ff0000"
                 label
               />
               <Pie
-                dataKey="waitlist_count"
+                dataKey="yes_rsvp_count"
+                name="rsvps"
                 data={this.getData()}
-                cx={500}
-                cy={200}
-                innerRadius={40}
+                cx="50%"
+                cy="50%"
+                innerRadius={60}
                 outerRadius={80}
-                fill="#ff0000"
+                fill="#BF2B26"
+                
               />
-              <Tooltip />
+              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
+              <Legend verticalAlign="top" height={36} />
             </PieChart>
           </ResponsiveContainer>
-
 
         </div>
         {event.yes_rsvp_count}
@@ -85,6 +81,7 @@ class Event extends Component {
           <div className="extra">
             {event.description}
             <br />
+
             <p className="going">{event.visibility}</p>
             <a href={event.link}>Event Link</a>
           </div>
