@@ -95,7 +95,7 @@ class App extends Component {
           <XAxis type="category" dataKey="date" name="date"/>
           <YAxis type="number" dataKey="number" name="number of events" />
           <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-          <Legend />
+          
           <Scatter data={this.getData()} fill="#FF0000" />
           
         </ScatterChart>
