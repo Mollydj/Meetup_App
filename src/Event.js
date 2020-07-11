@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { PieChart, Pie, Legend, Tooltip, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
 
 class Event extends Component {
   state = {
@@ -8,7 +8,6 @@ class Event extends Component {
   };
 
   handleShowDetails = () => {
-    //    this.state.details = this.setState({ details: !true });
     this.state.details === false
       ? this.setState({ details: true })
       : this.setState({ details: false });
@@ -41,7 +40,21 @@ class Event extends Component {
         <div className="name">
           <b>{event.name}</b>
 
-          <ResponsiveContainer height={400}>
+
+
+        </div>
+        {event.yes_rsvp_count}
+        {people}
+        <br />
+        <p className="going">{eventLocation}</p>
+        <button className="details-btn" onClick={this.handleShowDetails}>
+          details
+        </button>
+        {this.state.details && (
+          <div className="extra">
+            {event.description}
+            <br />
+            <ResponsiveContainer height={400}>
             <PieChart>
               <Pie
                 dataKey="rsvp_limit"
@@ -64,23 +77,11 @@ class Event extends Component {
                 fill="#BF2B26"
                 
               />
+
               <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-              <Legend verticalAlign="top" height={36} />
             </PieChart>
           </ResponsiveContainer>
 
-        </div>
-        {event.yes_rsvp_count}
-        {people}
-        <br />
-        <p className="going">{eventLocation}</p>
-        <button className="details-btn" onClick={this.handleShowDetails}>
-          details
-        </button>
-        {this.state.details && (
-          <div className="extra">
-            {event.description}
-            <br />
 
             <p className="going">{event.visibility}</p>
             <a href={event.link}>Event Link</a>
