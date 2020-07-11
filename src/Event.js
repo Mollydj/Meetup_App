@@ -24,12 +24,6 @@ class Event extends Component {
     const event = this.props.event;
     const colors = ["#ff0000", "#B80000"];
     const eventLocation = event.group.localized_location;
-    const people =
-      this.props.event.yes_rsvp_count > 1
-        ? " people attening"
-        : " person going";
-
-
     const data = [
       { name: "attendees", value: event.yes_rsvp_count },
       { name: "spots remaining", value: event.rsvp_limit - event.yes_rsvp_count },

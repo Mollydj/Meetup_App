@@ -8,7 +8,7 @@ import "./api";
 import { OnlineAlert } from "./Alert";
 import moment from "moment";
 import {
-  ScatterChart, Scatter, XAxis, YAxis, Legend, CartesianGrid, Tooltip, ResponsiveContainer
+  ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
 } from 'recharts';
 
 class App extends Component {
