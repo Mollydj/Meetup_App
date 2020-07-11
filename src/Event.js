@@ -43,12 +43,13 @@ class Event extends Component {
         <div className="name">
           <b>{event.name}</b>
         </div>
-        
+        {event.yes_rsvp_count} " Attendees"
         
      
         <br />
 
-        {event.rsvp_limit && //ask Trey about this
+        {this.props.event.rsvp_limit && this.props.event.yes_rsvp_count ? //ask Trey about this
+        <div className="EventChart">
             <ResponsiveContainer height={150} width={250}>
               <PieChart>
                 <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={32} label >
@@ -60,6 +61,8 @@ class Event extends Component {
                 <Tooltip />
               </PieChart>
             </ResponsiveContainer>
+            </div>
+            : ''
           }
 
         <p className="going">{eventLocation}</p>
