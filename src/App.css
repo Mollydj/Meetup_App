@@ -95,6 +95,11 @@ input[type="text"], input[type="number"] {
   font-weight: 600;
 }
 
+i {
+  font-size: 10px;
+  color: 910000;
+}
+
 .group-name {
   text-transform: uppercase;
   font-size: 14px;

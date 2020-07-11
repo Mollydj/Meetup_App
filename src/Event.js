@@ -43,11 +43,7 @@ class Event extends Component {
         <div className="name">
           <b>{event.name}</b>
         </div>
-        
-        
-     
-        <br />
-
+        <p className="going">{eventLocation}</p>
         {this.props.event.rsvp_limit && this.props.event.yes_rsvp_count ? //ask Trey about this
         <div className="EventChart">
             <ResponsiveContainer height={150} width={250}>
@@ -62,10 +58,10 @@ class Event extends Component {
               </PieChart>
             </ResponsiveContainer>
             </div>
-            : ''
+            : <i>*RSVP limit does not exisit!</i>
           }
 
-        <p className="going">{eventLocation}</p>
+        
         <button className="details-btn" onClick={this.handleShowDetails}>
           details
         </button>
