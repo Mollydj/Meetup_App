@@ -43,7 +43,7 @@ class Event extends Component {
         <div className="name">
           <b>{event.name}</b>
         </div>
-        {event.yes_rsvp_count} " Attendees"
+        
         
      
         <br />
