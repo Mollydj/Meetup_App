@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { PieChart, Pie, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  PieChart,
+  Pie,
+  Tooltip,
+  ResponsiveContainer,
+  Cell,
+  Legend,
+} from "recharts";
 
 class Event extends Component {
   state = {
@@ -13,24 +20,20 @@ class Event extends Component {
       : this.setState({ details: false });
   };
 
-  getData = () => {
-    const yesCount = this.props.event.yes_rsvp_count;
-    const spotsRemain = this.props.event.rsvp_limit - yesCount;
-    const openSeats = [
-      { name: "Attendees", yes_rsvp_count: this.props.event.yes_rsvp_count },
-      { name: "Spots Remaining", rsvp_limit: spotsRemain },
-      { name: "Total", rsvp_limit: this.props.event.rsvp_limit },
-    ];     
-    return openSeats;
-  };
-
   render() {
     const event = this.props.event;
+    const colors = ["#ff0000", "#B80000"];
     const eventLocation = event.group.localized_location;
     const people =
       this.props.event.yes_rsvp_count > 1
         ? " people attening"
         : " person going";
+
+
+    const data = [
+      { name: "attendees", value: event.yes_rsvp_count },
+      { name: "spots remaining", value: event.rsvp_limit - event.yes_rsvp_count },
+    ];
 
     return (
       <div className="Event">
@@ -39,13 +42,26 @@ class Event extends Component {
         </p>
         <div className="name">
           <b>{event.name}</b>
-
-
-
         </div>
-        {event.yes_rsvp_count}
-        {people}
+        
+        
+     
         <br />
+
+        {event.rsvp_limit && //ask Trey about this
+            <ResponsiveContainer height={150} width={250}>
+              <PieChart>
+                <Pie data={data} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={32} label >
+                  {
+                    data.map((entry, index) => (<Cell key={`cell-${index}`} fill={colors[index]} />))
+                  }
+                </Pie>
+                <Legend iconSize={10} iconType="triangle" layout="horizontal" verticalAlign="bottom" align="center" />
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          }
+
         <p className="going">{eventLocation}</p>
         <button className="details-btn" onClick={this.handleShowDetails}>
           details
@@ -54,34 +70,6 @@ class Event extends Component {
           <div className="extra">
             {event.description}
             <br />
-            <ResponsiveContainer height={400}>
-            <PieChart>
-              <Pie
-                dataKey="rsvp_limit"
-                name="Limit"
-                data={this.getData()}
-                cx="50%"
-                cy="50%"
-                outerRadius={80}
-                fill="#ff0000"
-                label
-              />
-              <Pie
-                dataKey="yes_rsvp_count"
-                name="rsvps"
-                data={this.getData()}
-                cx="50%"
-                cy="50%"
-                innerRadius={60}
-                outerRadius={80}
-                fill="#BF2B26"
-                
-              />
-
-              <Tooltip cursor={{ strokeDasharray: "3 3" }} />
-            </PieChart>
-          </ResponsiveContainer>
-
 
             <p className="going">{event.visibility}</p>
             <a href={event.link}>Event Link</a>
