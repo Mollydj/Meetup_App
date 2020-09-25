@@ -1,24 +1,7 @@
 import { mockEvents } from './mock-events';
 import axios from 'axios';
 
-async function getOrRenewAccessToken(type, key) {
-  let url;
-  if (type === 'get') {
-    url = 'https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/token/'
-      + key;
-  } else if (type === 'renew') {
-    url = 'https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/refresh/'
-      + key;
-  }
 
-  const tokenInfo = await axios.get(url);
-
-  localStorage.setItem('access_token', tokenInfo.data.access_token);
-  localStorage.setItem('refresh_token', tokenInfo.data.refresh_token);
-  localStorage.setItem('last_saved_time', Date.now());
-
-  return tokenInfo.data.access_token;
-}
 
 
 
@@ -44,6 +27,25 @@ async function getAccessToken(){
 
   const refreshToken = localStorage.getItem('refresh_token');
   return getOrRenewAccessToken('renew', refreshToken);
+}
+
+async function getOrRenewAccessToken(type, key) {
+  let url;
+  if (type === 'get') {
+    url = 'https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/token/'
+      + key;
+  } else if (type === 'renew') {
+    url = 'https://nfam6pi2sc.execute-api.us-east-1.amazonaws.com/dev/api/refresh/'
+      + key;
+  }
+
+  const tokenInfo = await axios.get(url);
+
+  localStorage.setItem('access_token', tokenInfo.data.access_token);
+  localStorage.setItem('refresh_token', tokenInfo.data.refresh_token);
+  localStorage.setItem('last_saved_time', Date.now());
+
+  return tokenInfo.data.access_token;
 }
 
 
