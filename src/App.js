@@ -83,7 +83,7 @@ class App extends Component {
     return (
       <div className="App">
         <OnlineAlert text={this.state.onlineText} />
-        <h1>Meetup React API</h1>
+        <h1>Meetup</h1>
         <CitySearch updateEvents={this.updateEvents} />
         <NumberOfEvents updateEvents={this.updateEvents} />
 
